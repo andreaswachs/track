@@ -6,7 +6,13 @@
 
 ## Installation
 
-(Provide installation instructions here)
+To install `track`, you need to have a Golang compiler on your local machine. Navigate to the `src/` folder and execute
+
+```bash
+go build
+```
+
+and move the built `track` binary to a folder located in your $PATH.
 
 ## Usage
 
