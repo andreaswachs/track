@@ -2,6 +2,8 @@
 
 `track` is a command line tool that helps you track your worked hours from month to month. It allows you to generate and manage time sheets, which are saved in YAML format for easy reading and editing.
 
+`track`'s reason for being is that I am tracking my work hours at my student job and I can't figure out how to make a table in Excel that can correctly subtract timestamps from each other and produce the number of hours spent working. 
+
 ## Installation
 
 (Provide installation instructions here)
@@ -23,8 +25,10 @@ track [command]
 Calculates the hours worked given a time sheet.
 
 ```bash
-track calc
+track calc [sheet | sheets]
 ```
+
+The basic calculation sums up the hours worked from the given sheet. A lunch break of 30 minutes is hardcoded in the binary. A lunch break can be subtracted from a days work when using `calc` if you supply the command with the `-l` flag.
 
 #### `gen`
 
