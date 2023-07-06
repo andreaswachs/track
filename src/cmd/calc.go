@@ -42,13 +42,17 @@ var calcCmd = &cobra.Command{
 		}
 
 		var lunchTimeDeduct time.Duration
-		shouldSubtractLunch, err := cmd.PersistentFlags().GetBool("substractlunch")
+		shouldSubtractLunch, err := cmd.PersistentFlags().GetBool("substractbreak")
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(2)
 		}
 		if shouldSubtractLunch {
-			lunchTimeDeduct = 30 * time.Minute
+			lunchTimeDeduct, err = cmd.PersistentFlags().GetDuration("break")
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(2)
+			}
 		}
 
 		var workedTime time.Duration
@@ -73,7 +77,8 @@ var calcCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(calcCmd)
-	calcCmd.PersistentFlags().BoolP("substractlunch", "l", false, "Subtract 30 minutes from each day worked for unpaid lunch")
+	calcCmd.PersistentFlags().BoolP("break", "b", false, "Subtract break from each day worked for unpaid lunch")
+	calcCmd.PersistentFlags().DurationP("breaktime", "t", 30*time.Minute, "Time to deduct for break")
 }
 
 func CheckFile(path string) error {
