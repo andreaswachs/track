@@ -26,16 +26,6 @@ track [command]
 
 ### Commands
 
-#### `calc`
-
-Calculates the hours worked given a time sheet.
-
-```bash
-track calc [sheet | sheets]
-```
-
-The basic calculation sums up the hours worked from the given sheet. A lunch break of 30 minutes is hardcoded in the binary. A lunch break can be subtracted from a days work when using `calc` if you supply the command with the `-l` flag.
-
 #### `gen`
 
 Generates a new time sheet for a given month, optionally for a user-defined year. If no month is provided, the current month is assumed. 
@@ -49,3 +39,15 @@ For example, to generate a time sheet for January 2023:
 ```bash
 track gen January --year 2023
 ```
+
+#### `calc`
+
+Calculates the hours worked given a time sheet.
+
+```bash
+track calc [sheet | sheets]
+```
+
+The basic calculation sums up the hours worked from the given sheet. A lunch break of 30 minutes is standard. A lunch break can be subtracted from a days work when using `calc` if you supply the command with the `-b` flag. Change the duration of the break with the flag `-t` 
+
+
